@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet Bloom · Bakery &amp; Cafe</title>
+  <style>
+    /* ==========================================================
+       Sweet Bloom — demo styles (all in one)
+       Soft, warm bakery / cafe / dessert shop
+       ========================================================== */
+
+    :root {
+      --green-dark: #3d5a4b;
+      --green-sage: #9bb7a8;
+      --pink-blush: #fee9ee;
+      --pink-mid: #e6b5c4;
+      --pink-rose: #d07e9a;
+
+      --cream: #fdfaf7;
+      --ink: #2a3930;
+
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --shadow-soft: 0 12px 30px rgba(45, 60, 50, 0.12);
+
+      --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12'%3E%3Cpath d='M0,6 Q6,0 12,6 T24,6' fill='none' stroke='%23d07e9a' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: #e7efe3;
+      color: var(--ink);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ---------- header ---------- */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 20px 8px;
+      max-width: 1080px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .brand {
+      font-family: "Georgia", "Iowan Old Style", serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--green-dark);
+      letter-spacing: 0.3px;
+    }
+    .brand small {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--pink-rose);
+      margin-left: 6px;
+    }
+
+    .menu-wrap {
+      position: relative;
+    }
+    .menu-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-dark);
+      transition: background 0.2s;
+    }
+    .menu-btn:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
+    .menu-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .menu-panel {
+      position: absolute;
+      top: 58px;
+      right: 0;
+      background: #fff;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      padding: 10px;
+      min-width: 200px;
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 40;
+    }
+    .menu-panel.is-open {
+      display: flex;
+    }
+    .menu-panel a {
+      display: block;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--green-dark);
+    }
+    .menu-panel a:hover {
+      background: var(--pink-blush);
+    }
+
+    /* ---------- headings ---------- */
+    .page-heading {
+      padding: 20px 20px 4px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .page-heading h1 {
+      font-family: "Georgia", "Iowan Old Style", serif;
+      font-size: 40px;
+      color: var(--green-dark);
+      margin: 0;
+    }
+    .page-heading .squiggle {
+      width: 150px;
+      height: 12px;
+      background-image: var(--squiggle);
+      background-repeat: repeat-x;
+      margin-top: 6px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin: 44px 0 18px;
+    }
+    .section-heading h2 {
+      font-family: "Georgia", "Iowan Old Style", serif;
+      font-size: 26px;
+      color: var(--green-dark);
+      margin: 0;
+    }
+    .section-heading .squiggle {
+      width: 90px;
+      height: 10px;
+      background-image: var(--squiggle);
+      background-repeat: repeat-x;
+      margin-top: 4px;
+    }
+
+    /* ---------- category tabs ---------- */
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 10px 20px 0;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .category-tabs a {
+      background: rgba(255, 255, 255, 0.5);
+      color: var(--green-dark);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .category-tabs a:hover {
+      background: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- product grid ---------- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(45, 60, 50, 0.18);
+    }
+
+    .product-card .thumb {
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      overflow: hidden;
+      background: var(--pink-blush);
+    }
+    .product-card .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .product-card:hover .thumb img {
+      transform: scale(1.04);
+    }
+
+    .product-card .info {
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .product-card .name {
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--ink);
+    }
+    .product-card .price {
+      font-weight: 700;
+      color: var(--pink-rose);
+      font-size: 15px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 22px;
+      text-align: center;
+      transition: transform 0.12s, box-shadow 0.2s;
+    }
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-rose {
+      background: var(--pink-rose);
+      color: #fff;
+    }
+    .btn-rose:hover {
+      box-shadow: 0 10px 20px rgba(208, 126, 154, 0.4);
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--green-dark);
+      border: 1.5px solid var(--green-dark);
+    }
+    .btn-outline:hover {
+      background: var(--green-dark);
+      color: #fff;
+    }
+
+    .btn-block {
+      width: 100%;
+      display: block;
+    }
+
+    .product-card .add-btn {
+      margin-top: 6px;
+    }
+
+    /* ---------- coming soon ---------- */
+    .coming-soon-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 44px 28px;
+      text-align: center;
+    }
+    .coming-soon-card .badge {
+      display: inline-block;
+      background: var(--pink-blush);
+      color: var(--pink-rose);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .coming-soon-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      font-family: "Georgia", "Iowan Old Style", serif;
+    }
+    .coming-soon-card p {
+      margin: 0;
+      color: #6b7d70;
+      font-size: 14.5px;
+      max-width: 360px;
+      margin-inline: auto;
+    }
+
+    /* ---------- panel / card ---------- */
+    .panel {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 30px;
+    }
+
+    /* ---------- footer ---------- */
+    .site-footer {
+      margin-top: 60px;
+      padding: 30px 20px 50px;
+    }
+    .footer-panel {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: center;
+    }
+    .footer-panel h4 {
+      margin: 0 0 12px;
+      color: var(--green-dark);
+      font-family: "Georgia", "Iowan Old Style", serif;
+      font-size: 20px;
+    }
+    .footer-panel .btn {
+      display: inline-block;
+      padding: 12px 28px;
+    }
+    .footer-panel .copy {
+      margin: 18px 0 0;
+      font-size: 13px;
+      color: #4f6455;
+    }
+
+    /* ---------- lightbox ---------- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 44, 34, 0.82);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 30px;
+    }
+    .lightbox.is-open {
+      display: flex;
+    }
+    .lightbox-inner {
+      position: relative;
+      max-width: 500px;
+      width: 100%;
+    }
+    .lightbox-inner img {
+      width: 100%;
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .lightbox-title {
+      color: #fff;
+      text-align: center;
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--green-dark);
+      font-size: 22px;
+      font-weight: 700;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 640px) {
+      .page-heading h1 { font-size: 32px; }
+      .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .brand { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a class="brand" href="#">Sweet Bloom <small>bakery · cafe</small></a>
+
+  <div class="menu-wrap">
+    <button class="menu-btn" data-menu-button aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+    <nav class="menu-panel" data-menu-panel>
+      <a href="#">Home</a>
+      <a href="#cakes">Cakes</a>
+      <a href="#pastries">Pastries</a>
+      <a href="#drinks">Drinks</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HEADING -->
+<div class="page-heading">
+  <h1>Sweet treats</h1>
+  <span class="squiggle"></span>
+</div>
+
+<!-- CATEGORY TABS (demo) -->
+<nav class="category-tabs">
+  <a href="#cakes">Cakes</a>
+  <a href="#pastries">Pastries</a>
+  <a href="#drinks">Drinks</a>
+</nav>
+
+<main class="wrap">
+
+  <!-- SECTION: CAKES -->
+  <section id="cakes">
+    <div class="section-heading">
+      <div>
+        <h2>Cakes</h2>
+        <span class="squiggle"></span>
+      </div>
+    </div>
+    <div class="product-grid" id="cake-grid"></div>
+  </section>
+
+  <!-- SECTION: PASTRIES -->
+  <section id="pastries">
+    <div class="section-heading">
+      <div>
+        <h2>Pastries</h2>
+        <span class="squiggle"></span>
+      </div>
+    </div>
+    <div class="product-grid" id="pastry-grid"></div>
+  </section>
+
+  <!-- SECTION: DRINKS -->
+  <section id="drinks">
+    <div class="section-heading">
+      <div>
+        <h2>Drinks</h2>
+        <span class="squiggle"></span>
+      </div>
+    </div>
+    <div class="coming-soon-card">
+      <span class="badge">Coming soon</span>
+      <h3>Seasonal drinks</h3>
+      <p>Latte, matcha, hot chocolate &amp; more — coming to our menu soon.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT (demo placeholder) -->
+  <section id="about" style="margin-top: 50px;">
+    <div class="section-heading">
+      <div>
+        <h2>About Sweet Bloom</h2>
+        <span class="squiggle"></span>
+      </div>
+    </div>
+    <div class="panel" style="margin-bottom: 20px;">
+      <p style="margin:0; line-height:1.7; color:#3a5343; font-size:16px;">
+        Sweet Bloom is a cozy bakery &amp; cafe inspired by soft mornings and
+        sweet indulgences. All our treats are made with love, butter, and a
+        pinch of magic. This is a demo website — no real orders, just a
+        taste of what could be.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer wrap">
+  <div class="footer-panel">
+    <h4>Sweet Bloom · Bakery &amp; Cafe</h4>
+    <a class="btn btn-rose" href="#">Visit our (demo) shop</a>
+    <p class="copy">© 2026 Sweet Bloom — made for demo purposes.</p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" data-lightbox>
+  <div class="lightbox-inner">
+    <button class="lightbox-close" data-lightbox-close aria-label="Close">&times;</button>
+    <img data-lightbox-img src="" alt="" />
+    <p class="lightbox-title" data-lightbox-title></p>
+  </div>
+</div>
+
+<script>
+  // ==========================================================
+  // DEMO PRODUCT CATALOG — bakery / cafe / dessert themed
+  // ==========================================================
+  const PRODUCTS = [
+    // cakes
+    { id: "berry",    name: "Berry Dream",    emoji: "🍓", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Berry",    price: 4.50, category: "cake" },
+    { id: "choco",    name: "Choco Velvet",   emoji: "🍫", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Choco",    price: 5.20, category: "cake" },
+    { id: "lemon",    name: "Lemon Drizzle",  emoji: "🍋", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Lemon",    price: 4.80, category: "cake" },
+    { id: "carrot",   name: "Carrot Walnut",  emoji: "🥕", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Carrot",   price: 4.90, category: "cake" },
+    // pastries
+    { id: "croissant",name: "Butter Croissant", emoji: "🥐", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Croissant", price: 3.20, category: "pastry" },
+    { id: "pain",     name: "Pain au Chocolat", emoji: "🍫", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Pain",     price: 3.50, category: "pastry" },
+    { id: "cinnamon", name: "Cinnamon Roll",   emoji: "🌀", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Cinnamon", price: 3.80, category: "pastry" },
+    { id: "danish",   name: "Fruit Danish",    emoji: "🍒", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Danish",   price: 3.40, category: "pastry" },
+  ];
+
+  // helper to render a grid
+  function renderGrid(containerId, category) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const items = PRODUCTS.filter(p => p.category === category);
+    if (!items.length) {
+      container.innerHTML = `<div class="panel" style="text-align:center; padding:30px;">Coming soon</div>`;
+      return;
+    }
+    container.innerHTML = items.map(p => `
+      <article class="product-card">
+        <button class="thumb" data-lightbox-trigger data-image="${p.image}" data-title="${p.name} ${p.emoji}" aria-label="View ${p.name}">
+          <img src="${p.image}" alt="${p.name}" loading="lazy" />
+        </button>
+        <div class="info">
+          <div class="name">${p.name} ${p.emoji}</div>
+          <div class="price">$${p.price.toFixed(2)}</div>
+          <button class="btn btn-rose add-btn" data-add="${p.id}">Add to (demo) cart</button>
+        </div>
+      </article>
+    `).join("");
+
+    // "add to cart" just shows a toast-like feedback (no real cart)
+    container.querySelectorAll("[data-add]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const orig = btn.textContent;
+        btn.textContent = "Added! 🧁";
+        btn.style.background = "#9bb7a8";
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.style.background = "";
+        }, 1200);
+      });
+    });
+  }
+
+  // render both grids
+  renderGrid("cake-grid", "cake");
+  renderGrid("pastry-grid", "pastry");
+
+  // ==========================================================
+  // UI: hamburger menu + lightbox (same as original)
+  // ==========================================================
+  document.addEventListener("DOMContentLoaded", () => {
+    // menu
+    const menuBtn = document.querySelector("[data-menu-button]");
+    const menuPanel = document.querySelector("[data-menu-panel]");
+    if (menuBtn && menuPanel) {
+      menuBtn.addEventListener("click", () => {
+        const isOpen = menuPanel.classList.toggle("is-open");
+        menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+      document.addEventListener("click", (e) => {
+        if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) {
+          menuPanel.classList.remove("is-open");
+          menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+
+    // lightbox
+    const lightbox = document.querySelector("[data-lightbox]");
+    if (lightbox) {
+      const img = lightbox.querySelector("[data-lightbox-img]");
+      const title = lightbox.querySelector("[data-lightbox-title]");
+      const close = lightbox.querySelector("[data-lightbox-close]");
+
+      document.querySelectorAll("[data-lightbox-trigger]").forEach(el => {
+        el.addEventListener("click", () => {
+          img.src = el.dataset.image;
+          img.alt = el.dataset.title || "";
+          title.textContent = el.dataset.title || "";
+          lightbox.classList.add("is-open");
+          document.body.classList.add("no-scroll");
+        });
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        document.body.classList.remove("no-scroll");
+        img.src = "";
+      }
+      close.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+      });
+    }
+  });
+</script>
+</body>
+</html>

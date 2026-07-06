@@ -66,12 +66,149 @@
       padding: 0 20px;
     }
 
-    /* ========== HERO (big, cute, with glossy buttons) ========== */
+    /* ========== TOP BAR (circled section — above hero) ========== */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      max-width: 1100px;
+      margin: 0 auto 0;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(6px);
+      border-radius: 60px;
+      margin: 12px 20px 0;
+      box-shadow: 0 4px 16px rgba(60, 80, 60, 0.06);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-bar .brand-mini {
+      font-family: "Georgia", "Iowan Old Style", serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--green-dark);
+      letter-spacing: 0.2px;
+    }
+    .top-bar .brand-mini small {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--pink-rose);
+      margin-left: 6px;
+    }
+    .top-bar .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .top-bar .nav-links a {
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--green-dark);
+      background: rgba(255, 255, 255, 0.5);
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.2px;
+    }
+    .top-bar .nav-links a:hover {
+      background: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* glossy variant for top-bar links (pastel) */
+    .top-bar .nav-links a.glossy-pink {
+      background: linear-gradient(145deg, #f5c8d6, #e8b0c2);
+      box-shadow: 0 4px 12px rgba(232, 176, 194, 0.3), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+      color: #4a3b42;
+    }
+    .top-bar .nav-links a.glossy-pink:hover {
+      box-shadow: 0 8px 20px rgba(232, 176, 194, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+    }
+    .top-bar .nav-links a.glossy-mint {
+      background: linear-gradient(145deg, #b8d5c7, #a0c0ae);
+      box-shadow: 0 4px 12px rgba(160, 192, 174, 0.3), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+      color: #2d4237;
+    }
+    .top-bar .nav-links a.glossy-mint:hover {
+      box-shadow: 0 8px 20px rgba(160, 192, 174, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+    }
+    .top-bar .nav-links a.glossy-peach {
+      background: linear-gradient(145deg, #fce1d4, #f5cdbc);
+      box-shadow: 0 4px 12px rgba(245, 205, 188, 0.3), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+      color: #4d3d38;
+    }
+    .top-bar .nav-links a.glossy-peach:hover {
+      box-shadow: 0 8px 20px rgba(245, 205, 188, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+    }
+    .top-bar .nav-links a.glossy-lavender {
+      background: linear-gradient(145deg, #d9cce6, #c7b8d6);
+      box-shadow: 0 4px 12px rgba(199, 184, 214, 0.3), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+      color: #3d3548;
+    }
+    .top-bar .nav-links a.glossy-lavender:hover {
+      box-shadow: 0 8px 20px rgba(199, 184, 214, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+    }
+
+    /* menu button inside top-bar (hamburger) */
+    .top-bar .menu-btn-small {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-dark);
+      transition: background 0.2s;
+      border: none;
+    }
+    .top-bar .menu-btn-small:hover {
+      background: rgba(255, 255, 255, 0.95);
+    }
+    .top-bar .menu-btn-small svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .top-bar .menu-wrap {
+      position: relative;
+    }
+    .top-bar .menu-panel {
+      position: absolute;
+      top: 48px;
+      right: 0;
+      background: #fff;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      padding: 10px;
+      min-width: 180px;
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 50;
+    }
+    .top-bar .menu-panel.is-open {
+      display: flex;
+    }
+    .top-bar .menu-panel a {
+      display: block;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--green-dark);
+    }
+    .top-bar .menu-panel a:hover {
+      background: var(--pink-blush);
+    }
+
+    /* ========== HERO (big, cute) ========== */
     .hero {
       background: linear-gradient(160deg, #fcf6f0, #f3ede6);
       border-radius: 0 0 56px 56px;
-      padding: 60px 24px 50px;
-      margin: 0 12px 16px;
+      padding: 40px 24px 44px;
+      margin: 8px 12px 16px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -100,23 +237,23 @@
     }
     .hero h1 {
       font-family: "Georgia", "Iowan Old Style", serif;
-      font-size: 52px;
+      font-size: 48px;
       color: var(--green-dark);
       margin: 0 0 4px;
       letter-spacing: -0.5px;
     }
     .hero h1 small {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 400;
       color: var(--pink-rose);
       display: inline-block;
       margin-left: 10px;
     }
     .hero .tagline {
-      font-size: 20px;
+      font-size: 19px;
       color: #4b6455;
       max-width: 520px;
-      margin: 6px auto 20px;
+      margin: 6px auto 16px;
       line-height: 1.6;
       font-weight: 500;
     }
@@ -129,13 +266,13 @@
       color: var(--pink-rose);
     }
 
-    /* glossy button base */
+    /* glossy button base (kept for hero if needed) */
     .btn-glossy {
       display: inline-block;
-      padding: 16px 40px;
+      padding: 14px 34px;
       border-radius: 60px;
       font-weight: 700;
-      font-size: 17px;
+      font-size: 16px;
       color: #fff;
       background: linear-gradient(145deg, #d07e9a, #b86582);
       box-shadow: 0 8px 20px rgba(208, 126, 154, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.5);
@@ -150,132 +287,6 @@
     }
     .btn-glossy:active {
       transform: scale(0.97);
-    }
-
-    /* pastel glossy variants */
-    .btn-glossy-pink {
-      background: linear-gradient(145deg, #f5c8d6, #e8b0c2);
-      box-shadow: 0 8px 20px rgba(232, 176, 194, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
-      color: #4a3b42;
-    }
-    .btn-glossy-pink:hover {
-      box-shadow: 0 16px 32px rgba(232, 176, 194, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.7);
-    }
-
-    .btn-glossy-mint {
-      background: linear-gradient(145deg, #b8d5c7, #a0c0ae);
-      box-shadow: 0 8px 20px rgba(160, 192, 174, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
-      color: #2d4237;
-    }
-    .btn-glossy-mint:hover {
-      box-shadow: 0 16px 32px rgba(160, 192, 174, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.7);
-    }
-
-    .btn-glossy-lavender {
-      background: linear-gradient(145deg, #d9cce6, #c7b8d6);
-      box-shadow: 0 8px 20px rgba(199, 184, 214, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
-      color: #3d3548;
-    }
-    .btn-glossy-lavender:hover {
-      box-shadow: 0 16px 32px rgba(199, 184, 214, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.7);
-    }
-
-    .btn-glossy-peach {
-      background: linear-gradient(145deg, #fce1d4, #f5cdbc);
-      box-shadow: 0 8px 20px rgba(245, 205, 188, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
-      color: #4d3d38;
-    }
-    .btn-glossy-peach:hover {
-      box-shadow: 0 16px 32px rgba(245, 205, 188, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.7);
-    }
-
-    .hero .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 12px;
-    }
-    .hero .btn-group .btn-glossy {
-      padding: 14px 32px;
-      font-size: 16px;
-      min-width: 130px;
-    }
-
-    /* ========== header (small, with menu) ========== */
-    .site-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px 4px;
-      max-width: 1080px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .brand {
-      font-family: "Georgia", "Iowan Old Style", serif;
-      font-weight: 700;
-      font-size: 26px;
-      color: var(--green-dark);
-      letter-spacing: 0.3px;
-    }
-    .brand small {
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--pink-rose);
-      margin-left: 6px;
-    }
-
-    .menu-wrap {
-      position: relative;
-    }
-    .menu-btn {
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--green-dark);
-      transition: background 0.2s;
-    }
-    .menu-btn:hover {
-      background: rgba(255, 255, 255, 0.9);
-    }
-    .menu-btn svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .menu-panel {
-      position: absolute;
-      top: 56px;
-      right: 0;
-      background: #fff;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      padding: 10px;
-      min-width: 190px;
-      display: none;
-      flex-direction: column;
-      gap: 2px;
-      z-index: 40;
-    }
-    .menu-panel.is-open {
-      display: flex;
-    }
-    .menu-panel a {
-      display: block;
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--green-dark);
-    }
-    .menu-panel a:hover {
-      background: var(--pink-blush);
     }
 
     /* ========== headings ========== */
@@ -518,39 +529,53 @@
 
     /* ========== responsive ========== */
     @media (max-width: 640px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 12px 16px;
+        border-radius: 32px;
+        margin: 8px 12px 0;
+      }
+      .top-bar .brand-mini {
+        font-size: 20px;
+        text-align: center;
+      }
+      .top-bar .brand-mini small {
+        font-size: 13px;
+      }
+      .top-bar .nav-links {
+        justify-content: center;
+      }
+      .top-bar .nav-links a {
+        font-size: 12px;
+        padding: 6px 14px;
+      }
+      .top-bar .menu-wrap {
+        align-self: center;
+      }
+
       .hero h1 { font-size: 34px; }
       .hero h1 small { font-size: 20px; display: block; margin-left: 0; }
       .hero .tagline { font-size: 17px; }
-      .hero { padding: 40px 18px 36px; }
-      .hero .btn-group .btn-glossy { padding: 12px 22px; font-size: 14px; min-width: 100px; }
+      .hero { padding: 30px 18px 32px; }
       .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-      .brand { font-size: 20px; }
-      .brand small { font-size: 13px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ====== HERO (big, cute, with glossy buttons) ====== -->
-<section class="hero">
-  <h1>Sweet Bloom <small>bakery · cafe</small></h1>
-  <p class="tagline">
-    Welcome to our cozy little café — where every bite feels like a warm hug.<br />
-    <span>Let’s see what we’ve got today.</span>
-  </p>
-  <div class="btn-group">
-    <a href="#cakes" class="btn-glossy btn-glossy-pink">🧁 Cakes</a>
-    <a href="#pastries" class="btn-glossy btn-glossy-peach">🥐 Pastries</a>
-    <a href="#drinks" class="btn-glossy btn-glossy-mint">☕ Drinks</a>
-    <a href="#about" class="btn-glossy btn-glossy-lavender">🌸 About</a>
+<!-- ====== TOP BAR (circled section — ABOVE hero) ====== -->
+<div class="top-bar">
+  <span class="brand-mini">Sweet Bloom <small>bakery · cafe</small></span>
+  <div class="nav-links">
+    <a href="#cakes" class="glossy-pink">🧁 Cakes</a>
+    <a href="#pastries" class="glossy-peach">🥐 Pastries</a>
+    <a href="#drinks" class="glossy-mint">☕ Drinks</a>
+    <a href="#about" class="glossy-lavender">🌸 About</a>
   </div>
-</section>
-
-<!-- ====== HEADER (with menu) ====== -->
-<header class="site-header">
-  <a class="brand" href="#">Sweet Bloom <small>bakery · cafe</small></a>
   <div class="menu-wrap">
-    <button class="menu-btn" data-menu-button aria-label="Menu" aria-expanded="false">
+    <button class="menu-btn-small" data-menu-button aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
         <path d="M4 7h16M4 12h16M4 17h16"/>
       </svg>
@@ -563,7 +588,16 @@
       <a href="#about">About</a>
     </nav>
   </div>
-</header>
+</div>
+
+<!-- ====== HERO (big, cute) ====== -->
+<section class="hero">
+  <h1>Sweet Bloom <small>bakery · cafe</small></h1>
+  <p class="tagline">
+    Welcome to our cozy little café — where every bite feels like a warm hug.<br />
+    <span>Let’s see what we’ve got today.</span>
+  </p>
+</section>
 
 <!-- ====== MAIN ====== -->
 <main class="wrap">
@@ -700,6 +734,7 @@
   // UI: hamburger menu + lightbox
   // ==========================================================
   document.addEventListener("DOMContentLoaded", () => {
+    // Top-bar menu
     const menuBtn = document.querySelector("[data-menu-button]");
     const menuPanel = document.querySelector("[data-menu-panel]");
     if (menuBtn && menuPanel) {
@@ -715,6 +750,7 @@
       });
     }
 
+    // Lightbox
     const lightbox = document.querySelector("[data-lightbox]");
     if (lightbox) {
       const img = lightbox.querySelector("[data-lightbox-img]");

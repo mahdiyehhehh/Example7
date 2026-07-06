@@ -66,100 +66,148 @@
       padding: 0 20px;
     }
 
-    /* ---------- HERO ---------- */
+    /* ========== HERO (big, cute, with glossy buttons) ========== */
     .hero {
-      background: linear-gradient(145deg, #f7f2ea, #efe8e0);
-      border-radius: 0 0 48px 48px;
-      padding: 50px 24px 40px;
-      margin: 0 12px 12px;
+      background: linear-gradient(160deg, #fcf6f0, #f3ede6);
+      border-radius: 0 0 56px 56px;
+      padding: 60px 24px 50px;
+      margin: 0 12px 16px;
       text-align: center;
-      box-shadow: 0 8px 30px rgba(60, 80, 60, 0.08);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 6px 28px rgba(60, 80, 60, 0.06);
+    }
+    .hero::before {
+      content: "🧁🍰🥐";
+      position: absolute;
+      font-size: 160px;
+      opacity: 0.05;
+      right: -20px;
+      bottom: -40px;
+      transform: rotate(8deg);
+      pointer-events: none;
+      letter-spacing: 20px;
     }
     .hero::after {
-      content: "🧁";
+      content: "☕";
       position: absolute;
-      font-size: 120px;
+      font-size: 110px;
       opacity: 0.06;
-      right: -10px;
-      bottom: -30px;
-      transform: rotate(12deg);
+      left: -10px;
+      top: 20px;
+      transform: rotate(-12deg);
       pointer-events: none;
     }
     .hero h1 {
       font-family: "Georgia", "Iowan Old Style", serif;
-      font-size: 40px;
+      font-size: 52px;
       color: var(--green-dark);
-      margin: 0 0 8px;
-      letter-spacing: -0.3px;
+      margin: 0 0 4px;
+      letter-spacing: -0.5px;
     }
     .hero h1 small {
-      font-size: 22px;
+      font-size: 28px;
       font-weight: 400;
       color: var(--pink-rose);
       display: inline-block;
-      margin-left: 8px;
+      margin-left: 10px;
     }
-    .hero p {
-      font-size: 17px;
+    .hero .tagline {
+      font-size: 20px;
       color: #4b6455;
-      max-width: 480px;
-      margin: 0 auto 24px;
+      max-width: 520px;
+      margin: 6px auto 20px;
       line-height: 1.6;
+      font-weight: 500;
     }
-    .hero .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
+    .hero .tagline span {
+      display: inline-block;
+      background: rgba(208, 126, 154, 0.12);
+      padding: 0 14px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: var(--pink-rose);
     }
 
-    /* ---------- GLOSSY BUTTONS (hero + category tabs) ---------- */
+    /* glossy button base */
     .btn-glossy {
       display: inline-block;
-      padding: 14px 34px;
+      padding: 16px 40px;
       border-radius: 60px;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 17px;
       color: #fff;
       background: linear-gradient(145deg, #d07e9a, #b86582);
-      box-shadow: 0 8px 18px rgba(208, 126, 154, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 20px rgba(208, 126, 154, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.5);
       border: none;
       transition: transform 0.15s, box-shadow 0.2s;
       text-align: center;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.4px;
     }
     .btn-glossy:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 28px rgba(208, 126, 154, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(208, 126, 154, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.6);
     }
     .btn-glossy:active {
       transform: scale(0.97);
     }
 
-    /* glossy variants */
-    .btn-glossy-green {
-      background: linear-gradient(145deg, #6a8f7a, #4d6e5b);
-      box-shadow: 0 8px 18px rgba(70, 110, 80, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    /* pastel glossy variants */
+    .btn-glossy-pink {
+      background: linear-gradient(145deg, #f5c8d6, #e8b0c2);
+      box-shadow: 0 8px 20px rgba(232, 176, 194, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+      color: #4a3b42;
     }
-    .btn-glossy-green:hover {
-      box-shadow: 0 14px 28px rgba(70, 110, 80, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.5);
-    }
-    .btn-glossy-gold {
-      background: linear-gradient(145deg, #d4a373, #c28a5a);
-      box-shadow: 0 8px 18px rgba(194, 138, 90, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.5);
-    }
-    .btn-glossy-gold:hover {
-      box-shadow: 0 14px 28px rgba(194, 138, 90, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    .btn-glossy-pink:hover {
+      box-shadow: 0 16px 32px rgba(232, 176, 194, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.7);
     }
 
-    /* ---------- header ---------- */
+    .btn-glossy-mint {
+      background: linear-gradient(145deg, #b8d5c7, #a0c0ae);
+      box-shadow: 0 8px 20px rgba(160, 192, 174, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+      color: #2d4237;
+    }
+    .btn-glossy-mint:hover {
+      box-shadow: 0 16px 32px rgba(160, 192, 174, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-glossy-lavender {
+      background: linear-gradient(145deg, #d9cce6, #c7b8d6);
+      box-shadow: 0 8px 20px rgba(199, 184, 214, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+      color: #3d3548;
+    }
+    .btn-glossy-lavender:hover {
+      box-shadow: 0 16px 32px rgba(199, 184, 214, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-glossy-peach {
+      background: linear-gradient(145deg, #fce1d4, #f5cdbc);
+      box-shadow: 0 8px 20px rgba(245, 205, 188, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+      color: #4d3d38;
+    }
+    .btn-glossy-peach:hover {
+      box-shadow: 0 16px 32px rgba(245, 205, 188, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.7);
+    }
+
+    .hero .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .hero .btn-group .btn-glossy {
+      padding: 14px 32px;
+      font-size: 16px;
+      min-width: 130px;
+    }
+
+    /* ========== header (small, with menu) ========== */
     .site-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 20px 8px;
+      padding: 10px 20px 4px;
       max-width: 1080px;
       margin: 0 auto;
       position: relative;
@@ -168,12 +216,12 @@
     .brand {
       font-family: "Georgia", "Iowan Old Style", serif;
       font-weight: 700;
-      font-size: 28px;
+      font-size: 26px;
       color: var(--green-dark);
       letter-spacing: 0.3px;
     }
     .brand small {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 400;
       color: var(--pink-rose);
       margin-left: 6px;
@@ -183,8 +231,8 @@
       position: relative;
     }
     .menu-btn {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.6);
       display: flex;
@@ -203,13 +251,13 @@
 
     .menu-panel {
       position: absolute;
-      top: 58px;
+      top: 56px;
       right: 0;
       background: #fff;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-soft);
       padding: 10px;
-      min-width: 200px;
+      min-width: 190px;
       display: none;
       flex-direction: column;
       gap: 2px;
@@ -230,20 +278,20 @@
       background: var(--pink-blush);
     }
 
-    /* ---------- headings ---------- */
+    /* ========== headings ========== */
     .page-heading {
-      padding: 20px 20px 4px;
+      padding: 14px 20px 2px;
       max-width: 1080px;
       margin: 0 auto;
     }
     .page-heading h1 {
       font-family: "Georgia", "Iowan Old Style", serif;
-      font-size: 40px;
+      font-size: 36px;
       color: var(--green-dark);
       margin: 0;
     }
     .page-heading .squiggle {
-      width: 150px;
+      width: 140px;
       height: 12px;
       background-image: var(--squiggle);
       background-repeat: repeat-x;
@@ -270,21 +318,7 @@
       margin-top: 4px;
     }
 
-    /* ---------- category tabs (glossy) ---------- */
-    .category-tabs {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      padding: 10px 20px 4px;
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-    .category-tabs .btn-glossy {
-      padding: 12px 28px;
-      font-size: 15px;
-    }
-
-    /* ---------- product grid ---------- */
+    /* ========== product grid ========== */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -366,7 +400,7 @@
       margin-top: 6px;
     }
 
-    /* ---------- coming soon ---------- */
+    /* ========== coming soon ========== */
     .coming-soon-card {
       background: #fff;
       border-radius: var(--radius-lg);
@@ -399,7 +433,7 @@
       margin-inline: auto;
     }
 
-    /* ---------- panel / card ---------- */
+    /* ========== panel ========== */
     .panel {
       background: #fff;
       border-radius: var(--radius-lg);
@@ -407,7 +441,7 @@
       padding: 30px;
     }
 
-    /* ---------- footer ---------- */
+    /* ========== footer ========== */
     .site-footer {
       margin-top: 60px;
       padding: 30px 20px 50px;
@@ -434,7 +468,7 @@
       color: #4f6455;
     }
 
-    /* ---------- lightbox ---------- */
+    /* ========== lightbox ========== */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -482,34 +516,39 @@
       justify-content: center;
     }
 
-    /* ---------- responsive ---------- */
+    /* ========== responsive ========== */
     @media (max-width: 640px) {
-      .page-heading h1 { font-size: 32px; }
+      .hero h1 { font-size: 34px; }
+      .hero h1 small { font-size: 20px; display: block; margin-left: 0; }
+      .hero .tagline { font-size: 17px; }
+      .hero { padding: 40px 18px 36px; }
+      .hero .btn-group .btn-glossy { padding: 12px 22px; font-size: 14px; min-width: 100px; }
       .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-      .brand { font-size: 22px; }
-      .hero h1 { font-size: 30px; }
-      .hero h1 small { font-size: 18px; display: block; margin-left: 0; }
-      .hero { padding: 34px 18px 30px; }
+      .brand { font-size: 20px; }
+      .brand small { font-size: 13px; }
     }
   </style>
 </head>
 <body>
 
-<!-- HERO (welcome + glossy buttons) -->
+<!-- ====== HERO (big, cute, with glossy buttons) ====== -->
 <section class="hero">
   <h1>Sweet Bloom <small>bakery · cafe</small></h1>
-  <p>Welcome to our cozy little café — where every bite feels like a warm hug. <br />Let’s see what we’ve got today.</p>
+  <p class="tagline">
+    Welcome to our cozy little café — where every bite feels like a warm hug.<br />
+    <span>Let’s see what we’ve got today.</span>
+  </p>
   <div class="btn-group">
-    <a href="#cakes" class="btn-glossy">🧁 Cakes</a>
-    <a href="#pastries" class="btn-glossy btn-glossy-gold">🥐 Pastries</a>
-    <a href="#drinks" class="btn-glossy btn-glossy-green">☕ Drinks</a>
+    <a href="#cakes" class="btn-glossy btn-glossy-pink">🧁 Cakes</a>
+    <a href="#pastries" class="btn-glossy btn-glossy-peach">🥐 Pastries</a>
+    <a href="#drinks" class="btn-glossy btn-glossy-mint">☕ Drinks</a>
+    <a href="#about" class="btn-glossy btn-glossy-lavender">🌸 About</a>
   </div>
 </section>
 
-<!-- HEADER (with menu) -->
+<!-- ====== HEADER (with menu) ====== -->
 <header class="site-header">
   <a class="brand" href="#">Sweet Bloom <small>bakery · cafe</small></a>
-
   <div class="menu-wrap">
     <button class="menu-btn" data-menu-button aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -526,13 +565,7 @@
   </div>
 </header>
 
-<!-- GLOSSY CATEGORY TABS (second set, below header) -->
-<div class="category-tabs">
-  <a href="#cakes" class="btn-glossy">🧁 Cakes</a>
-  <a href="#pastries" class="btn-glossy btn-glossy-gold">🥐 Pastries</a>
-  <a href="#drinks" class="btn-glossy btn-glossy-green">☕ Drinks</a>
-</div>
-
+<!-- ====== MAIN ====== -->
 <main class="wrap">
 
   <!-- SECTION: CAKES -->
@@ -592,7 +625,7 @@
 
 </main>
 
-<!-- FOOTER -->
+<!-- ====== FOOTER ====== -->
 <footer class="site-footer wrap">
   <div class="footer-panel">
     <h4>Sweet Bloom · Bakery &amp; Cafe</h4>
@@ -601,7 +634,7 @@
   </div>
 </footer>
 
-<!-- LIGHTBOX -->
+<!-- ====== LIGHTBOX ====== -->
 <div class="lightbox" data-lightbox>
   <div class="lightbox-inner">
     <button class="lightbox-close" data-lightbox-close aria-label="Close">&times;</button>
@@ -612,15 +645,13 @@
 
 <script>
   // ==========================================================
-  // DEMO PRODUCT CATALOG — bakery / cafe / dessert themed
+  // DEMO PRODUCT CATALOG
   // ==========================================================
   const PRODUCTS = [
-    // cakes
     { id: "berry",    name: "Berry Dream",    emoji: "🍓", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Berry",    price: 4.50, category: "cake" },
     { id: "choco",    name: "Choco Velvet",   emoji: "🍫", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Choco",    price: 5.20, category: "cake" },
     { id: "lemon",    name: "Lemon Drizzle",  emoji: "🍋", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Lemon",    price: 4.80, category: "cake" },
     { id: "carrot",   name: "Carrot Walnut",  emoji: "🥕", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Carrot",   price: 4.90, category: "cake" },
-    // pastries
     { id: "croissant",name: "Butter Croissant", emoji: "🥐", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Croissant", price: 3.20, category: "pastry" },
     { id: "pain",     name: "Pain au Chocolat", emoji: "🍫", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Pain",     price: 3.50, category: "pastry" },
     { id: "cinnamon", name: "Cinnamon Roll",   emoji: "🌀", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Cinnamon", price: 3.80, category: "pastry" },

@@ -151,68 +151,67 @@
       box-shadow: 0 8px 20px rgba(199, 184, 214, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.6);
     }
 
-    /* ====== HAMBURGER MENU BUTTON — TOP RIGHT, VISIBLE, CLICKABLE ====== */
-    .menu-wrap-main {
-      position: relative;
-      flex-shrink: 0;
-    }
-    .menu-btn-main {
-      width: 46px;
-      height: 46px;
+    /* ====== HAMBURGER MENU — now a floating button at bottom-right ====== */
+    .menu-fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.8);
+      background: linear-gradient(145deg, #d07e9a, #b86582);
+      box-shadow: 0 6px 20px rgba(208, 126, 154, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--green-dark);
-      transition: background 0.2s, transform 0.15s;
+      color: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
       border: none;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      flex-shrink: 0;
       cursor: pointer;
     }
-    .menu-btn-main:hover {
-      background: #ffffff;
-      transform: scale(1.05);
+    .menu-fab:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 30px rgba(208, 126, 154, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
     }
-    .menu-btn-main:active {
+    .menu-fab:active {
       transform: scale(0.95);
     }
-    .menu-btn-main svg {
-      width: 24px;
-      height: 24px;
+    .menu-fab svg {
+      width: 26px;
+      height: 26px;
       display: block;
     }
 
-    /* menu panel — drops down from the button */
-    .menu-panel-main {
-      position: absolute;
-      top: 54px;
-      right: 0;
+    /* floating menu panel */
+    .menu-panel-fab {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
       background: #ffffff;
       border-radius: var(--radius-md);
-      box-shadow: 0 16px 40px rgba(45, 60, 50, 0.18);
-      padding: 10px;
+      box-shadow: 0 16px 48px rgba(45, 60, 50, 0.2);
+      padding: 12px;
       min-width: 190px;
       display: none;
       flex-direction: column;
-      gap: 2px;
-      z-index: 999;
-      border: 1px solid rgba(255,255,255,0.4);
+      gap: 4px;
+      z-index: 998;
+      border: 1px solid rgba(255,255,255,0.3);
     }
-    .menu-panel-main.is-open {
+    .menu-panel-fab.is-open {
       display: flex;
     }
-    .menu-panel-main a {
+    .menu-panel-fab a {
       display: block;
-      padding: 12px 18px;
+      padding: 12px 20px;
       border-radius: var(--radius-sm);
       font-weight: 600;
       font-size: 15px;
       color: var(--green-dark);
       transition: background 0.15s;
     }
-    .menu-panel-main a:hover {
+    .menu-panel-fab a:hover {
       background: var(--pink-blush);
     }
 
@@ -545,14 +544,6 @@
       .top-bar .nav-links {
         gap: 5px;
       }
-      .menu-btn-main {
-        width: 40px;
-        height: 40px;
-      }
-      .menu-btn-main svg {
-        width: 20px;
-        height: 20px;
-      }
 
       .hero {
         padding: 40px 18px 38px;
@@ -574,6 +565,22 @@
       .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       }
+
+      .menu-fab {
+        width: 48px;
+        height: 48px;
+        bottom: 20px;
+        right: 20px;
+      }
+      .menu-fab svg {
+        width: 22px;
+        height: 22px;
+      }
+      .menu-panel-fab {
+        bottom: 80px;
+        right: 20px;
+        min-width: 160px;
+      }
     }
   </style>
 </head>
@@ -587,21 +594,6 @@
     <a href="#pastries" class="glossy-peach">🥐 Pastries</a>
     <a href="#drinks" class="glossy-mint">☕ Drinks</a>
     <a href="#about" class="glossy-lavender">🌸 About</a>
-  </div>
-  <!-- HAMBURGER MENU — TOP RIGHT CORNER, VISIBLE, CLICKABLE -->
-  <div class="menu-wrap-main">
-    <button class="menu-btn-main" id="menuToggle" aria-label="Menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-        <path d="M4 7h16M4 12h16M4 17h16"/>
-      </svg>
-    </button>
-    <nav class="menu-panel-main" id="menuPanel">
-      <a href="#">Home</a>
-      <a href="#cakes">Cakes</a>
-      <a href="#pastries">Pastries</a>
-      <a href="#drinks">Drinks</a>
-      <a href="#about">About</a>
-    </nav>
   </div>
 </div>
 
@@ -683,6 +675,20 @@
   </div>
 </footer>
 
+<!-- ====== FLOATING MENU BUTTON (bottom-right) ====== -->
+<button class="menu-fab" id="menuFab" aria-label="Menu" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+    <path d="M4 7h16M4 12h16M4 17h16"/>
+  </svg>
+</button>
+<nav class="menu-panel-fab" id="menuPanelFab">
+  <a href="#">Home</a>
+  <a href="#cakes">Cakes</a>
+  <a href="#pastries">Pastries</a>
+  <a href="#drinks">Drinks</a>
+  <a href="#about">About</a>
+</nav>
+
 <!-- ====== LIGHTBOX ====== -->
 <div class="lightbox" data-lightbox>
   <div class="lightbox-inner">
@@ -746,21 +752,19 @@
   renderGrid("pastry-grid", "pastry");
 
   // ==========================================================
-  // UI: HAMBURGER MENU (top-right) — WORKS, VISIBLE
+  // UI: FLOATING MENU (bottom-right) + lightbox
   // ==========================================================
   document.addEventListener("DOMContentLoaded", function() {
-    const menuBtn = document.getElementById("menuToggle");
-    const menuPanel = document.getElementById("menuPanel");
+    const menuBtn = document.getElementById("menuFab");
+    const menuPanel = document.getElementById("menuPanelFab");
 
     if (menuBtn && menuPanel) {
-      // Toggle on button click
       menuBtn.addEventListener("click", function(e) {
         e.stopPropagation();
         const isOpen = menuPanel.classList.toggle("is-open");
         menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
 
-      // Close when clicking outside
       document.addEventListener("click", function(e) {
         if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) {
           menuPanel.classList.remove("is-open");
@@ -768,7 +772,6 @@
         }
       });
 
-      // Close on Escape
       document.addEventListener("keydown", function(e) {
         if (e.key === "Escape") {
           menuPanel.classList.remove("is-open");

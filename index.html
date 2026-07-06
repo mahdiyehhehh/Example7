@@ -151,59 +151,66 @@
       box-shadow: 0 8px 20px rgba(199, 184, 214, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.6);
     }
 
-    /* ====== HAMBURGER MENU BUTTON (top-right, visible) ====== */
+    /* ====== HAMBURGER MENU BUTTON — TOP RIGHT, VISIBLE, CLICKABLE ====== */
+    .menu-wrap-main {
+      position: relative;
+      flex-shrink: 0;
+    }
     .menu-btn-main {
       width: 46px;
       height: 46px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--green-dark);
       transition: background 0.2s, transform 0.15s;
       border: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
       flex-shrink: 0;
+      cursor: pointer;
     }
     .menu-btn-main:hover {
-      background: #fff;
-      transform: scale(1.04);
+      background: #ffffff;
+      transform: scale(1.05);
+    }
+    .menu-btn-main:active {
+      transform: scale(0.95);
     }
     .menu-btn-main svg {
       width: 24px;
       height: 24px;
+      display: block;
     }
 
-    /* menu panel (dropdown) */
-    .menu-wrap-main {
-      position: relative;
-      flex-shrink: 0;
-    }
+    /* menu panel — drops down from the button */
     .menu-panel-main {
       position: absolute;
-      top: 52px;
+      top: 54px;
       right: 0;
-      background: #fff;
+      background: #ffffff;
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
+      box-shadow: 0 16px 40px rgba(45, 60, 50, 0.18);
       padding: 10px;
       min-width: 190px;
       display: none;
       flex-direction: column;
       gap: 2px;
-      z-index: 50;
+      z-index: 999;
+      border: 1px solid rgba(255,255,255,0.4);
     }
     .menu-panel-main.is-open {
       display: flex;
     }
     .menu-panel-main a {
       display: block;
-      padding: 12px 16px;
+      padding: 12px 18px;
       border-radius: var(--radius-sm);
       font-weight: 600;
       font-size: 15px;
       color: var(--green-dark);
+      transition: background 0.15s;
     }
     .menu-panel-main a:hover {
       background: var(--pink-blush);
@@ -581,14 +588,14 @@
     <a href="#drinks" class="glossy-mint">☕ Drinks</a>
     <a href="#about" class="glossy-lavender">🌸 About</a>
   </div>
-  <!-- HAMBURGER MENU — top-right corner, visible -->
+  <!-- HAMBURGER MENU — TOP RIGHT CORNER, VISIBLE, CLICKABLE -->
   <div class="menu-wrap-main">
-    <button class="menu-btn-main" data-menu-button-main aria-label="Menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <button class="menu-btn-main" id="menuToggle" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
         <path d="M4 7h16M4 12h16M4 17h16"/>
       </svg>
     </button>
-    <nav class="menu-panel-main" data-menu-panel-main>
+    <nav class="menu-panel-main" id="menuPanel">
       <a href="#">Home</a>
       <a href="#cakes">Cakes</a>
       <a href="#pastries">Pastries</a>
@@ -739,20 +746,31 @@
   renderGrid("pastry-grid", "pastry");
 
   // ==========================================================
-  // UI: HAMBURGER MENU (top-right) + lightbox
+  // UI: HAMBURGER MENU (top-right) — WORKS, VISIBLE
   // ==========================================================
-  document.addEventListener("DOMContentLoaded", () => {
-    // Top-right hamburger menu
-    const menuBtn = document.querySelector("[data-menu-button-main]");
-    const menuPanel = document.querySelector("[data-menu-panel-main]");
+  document.addEventListener("DOMContentLoaded", function() {
+    const menuBtn = document.getElementById("menuToggle");
+    const menuPanel = document.getElementById("menuPanel");
+
     if (menuBtn && menuPanel) {
-      menuBtn.addEventListener("click", (e) => {
+      // Toggle on button click
+      menuBtn.addEventListener("click", function(e) {
         e.stopPropagation();
         const isOpen = menuPanel.classList.toggle("is-open");
         menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
-      document.addEventListener("click", (e) => {
+
+      // Close when clicking outside
+      document.addEventListener("click", function(e) {
         if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) {
+          menuPanel.classList.remove("is-open");
+          menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") {
           menuPanel.classList.remove("is-open");
           menuBtn.setAttribute("aria-expanded", "false");
         }

@@ -66,7 +66,7 @@
       padding: 0 20px;
     }
 
-    /* ========== TOP BAR (circled section — ABOVE hero) ========== */
+    /* ========== TOP BAR ========== */
     .top-bar {
       display: flex;
       align-items: center;
@@ -117,7 +117,6 @@
       transform: translateY(-2px);
     }
 
-    /* glossy pastel nav links */
     .top-bar .nav-links a.glossy-pink {
       background: linear-gradient(145deg, #f5c8d6, #e8b0c2);
       box-shadow: 0 4px 12px rgba(232, 176, 194, 0.3), inset 0 1px 3px rgba(255, 255, 255, 0.5);
@@ -151,7 +150,7 @@
       box-shadow: 0 8px 20px rgba(199, 184, 214, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.6);
     }
 
-    /* ====== FLOATING MENU BUTTON (bottom-right) ====== */
+    /* ====== FLOATING MENU BUTTON ====== */
     .menu-fab {
       position: fixed;
       bottom: 30px;
@@ -214,7 +213,7 @@
       background: var(--pink-blush);
     }
 
-    /* ========== HERO (BIGGER — extended vertically) ========== */
+    /* ========== HERO ========== */
     .hero {
       background: linear-gradient(160deg, #fcf6f0, #f3ede6);
       border-radius: 0 0 56px 56px;
@@ -282,25 +281,6 @@
     }
 
     /* ========== headings ========== */
-    .page-heading {
-      padding: 14px 20px 2px;
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-    .page-heading h1 {
-      font-family: "Georgia", "Iowan Old Style", serif;
-      font-size: 36px;
-      color: var(--green-dark);
-      margin: 0;
-    }
-    .page-heading .squiggle {
-      width: 140px;
-      height: 12px;
-      background-image: var(--squiggle);
-      background-repeat: repeat-x;
-      margin-top: 6px;
-    }
-
     .section-heading {
       display: flex;
       align-items: baseline;
@@ -321,86 +301,104 @@
       margin-top: 4px;
     }
 
-    /* ========== product grid ========== */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 24px;
+    /* ========== HORIZONTAL SCROLL (Instagram-style) ========== */
+    .scroll-wrap {
+      overflow-x: auto;
+      overflow-y: visible;
+      padding: 8px 4px 20px;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      display: flex;
+      gap: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--pink-rose) rgba(255,255,255,0.3);
+    }
+    .scroll-wrap::-webkit-scrollbar {
+      height: 6px;
+    }
+    .scroll-wrap::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+    }
+    .scroll-wrap::-webkit-scrollbar-thumb {
+      background: var(--pink-rose);
+      border-radius: 10px;
     }
 
-    .product-card {
+    .scroll-item {
+      flex: 0 0 200px;
+      scroll-snap-align: start;
       background: #fff;
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-soft);
       transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
     }
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(45, 60, 50, 0.18);
+    .scroll-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(45, 60, 50, 0.16);
     }
 
-    .product-card .thumb {
+    .scroll-item .thumb {
       aspect-ratio: 4 / 5;
       width: 100%;
       overflow: hidden;
       background: var(--pink-blush);
+      cursor: pointer;
     }
-    .product-card .thumb img {
+    .scroll-item .thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.3s;
     }
-    .product-card:hover .thumb img {
+    .scroll-item:hover .thumb img {
       transform: scale(1.04);
     }
 
-    .product-card .info {
-      padding: 18px 18px 20px;
+    .scroll-item .info {
+      padding: 14px 16px 16px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
+      flex: 1;
     }
-    .product-card .name {
+    .scroll-item .name {
       font-weight: 600;
-      font-size: 17px;
+      font-size: 15px;
       color: var(--ink);
     }
-    .product-card .price {
+    .scroll-item .price {
       font-weight: 700;
       color: var(--pink-rose);
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .btn {
       border: none;
       border-radius: 999px;
       font-weight: 700;
-      font-size: 15px;
-      padding: 12px 22px;
+      font-size: 13px;
+      padding: 10px 18px;
       text-align: center;
       transition: transform 0.12s, box-shadow 0.2s;
     }
     .btn:active {
       transform: scale(0.97);
     }
-
     .btn-rose {
       background: var(--pink-rose);
       color: #fff;
     }
     .btn-rose:hover {
-      box-shadow: 0 10px 20px rgba(208, 126, 154, 0.4);
+      box-shadow: 0 8px 18px rgba(208, 126, 154, 0.4);
     }
 
-    .btn-block {
+    .scroll-item .add-btn {
+      margin-top: 4px;
       width: 100%;
-      display: block;
-    }
-
-    .product-card .add-btn {
-      margin-top: 6px;
     }
 
     /* ========== coming soon ========== */
@@ -562,8 +560,8 @@
         font-size: 18px;
       }
 
-      .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      .scroll-item {
+        flex: 0 0 160px;
       }
 
       .menu-fab {
@@ -586,7 +584,7 @@
 </head>
 <body>
 
-<!-- ====== TOP BAR (circled section — ABOVE hero) ====== -->
+<!-- ====== TOP BAR ====== -->
 <div class="top-bar">
   <span class="brand-mini">Sweet Bloom <small>bakery · cafe</small></span>
   <div class="nav-links">
@@ -597,7 +595,7 @@
   </div>
 </div>
 
-<!-- ====== HERO (EXTENDED VERTICALLY) ====== -->
+<!-- ====== HERO ====== -->
 <section class="hero">
   <h1>Sweet Bloom <small>bakery · cafe</small></h1>
   <p class="tagline">
@@ -609,7 +607,7 @@
 <!-- ====== MAIN ====== -->
 <main class="wrap">
 
-  <!-- SECTION: CAKES -->
+  <!-- SECTION: CAKES (horizontal scroll) -->
   <section id="cakes">
     <div class="section-heading">
       <div>
@@ -617,10 +615,10 @@
         <span class="squiggle"></span>
       </div>
     </div>
-    <div class="product-grid" id="cake-grid"></div>
+    <div class="scroll-wrap" id="cake-scroll"></div>
   </section>
 
-  <!-- SECTION: PASTRIES -->
+  <!-- SECTION: PASTRIES (horizontal scroll) -->
   <section id="pastries">
     <div class="section-heading">
       <div>
@@ -628,7 +626,7 @@
         <span class="squiggle"></span>
       </div>
     </div>
-    <div class="product-grid" id="pastry-grid"></div>
+    <div class="scroll-wrap" id="pastry-scroll"></div>
   </section>
 
   <!-- SECTION: DRINKS -->
@@ -675,7 +673,7 @@
   </div>
 </footer>
 
-<!-- ====== FLOATING MENU BUTTON (bottom-right) ====== -->
+<!-- ====== FLOATING MENU ====== -->
 <button class="menu-fab" id="menuFab" aria-label="Menu" aria-expanded="false">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
     <path d="M4 7h16M4 12h16M4 17h16"/>
@@ -713,25 +711,25 @@
     { id: "danish",   name: "Fruit Danish",    emoji: "🍒", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Danish",   price: 3.40, category: "pastry" },
   ];
 
-  function renderGrid(containerId, category) {
+  function renderScroll(containerId, category) {
     const container = document.getElementById(containerId);
     if (!container) return;
     const items = PRODUCTS.filter(p => p.category === category);
     if (!items.length) {
-      container.innerHTML = `<div class="panel" style="text-align:center; padding:30px;">Coming soon</div>`;
+      container.innerHTML = `<div style="padding:20px; color:#4b6455;">Coming soon</div>`;
       return;
     }
     container.innerHTML = items.map(p => `
-      <article class="product-card">
+      <div class="scroll-item">
         <button class="thumb" data-lightbox-trigger data-image="${p.image}" data-title="${p.name} ${p.emoji}" aria-label="View ${p.name}">
           <img src="${p.image}" alt="${p.name}" loading="lazy" />
         </button>
         <div class="info">
           <div class="name">${p.name} ${p.emoji}</div>
           <div class="price">$${p.price.toFixed(2)}</div>
-          <button class="btn btn-rose add-btn" data-add="${p.id}">Add to (demo) cart</button>
+          <button class="btn btn-rose add-btn" data-add="${p.id}">Add to cart</button>
         </div>
-      </article>
+      </div>
     `).join("");
 
     container.querySelectorAll("[data-add]").forEach(btn => {
@@ -748,11 +746,11 @@
     });
   }
 
-  renderGrid("cake-grid", "cake");
-  renderGrid("pastry-grid", "pastry");
+  renderScroll("cake-scroll", "cake");
+  renderScroll("pastry-scroll", "pastry");
 
   // ==========================================================
-  // UI: FLOATING MENU (bottom-right) + lightbox
+  // UI: FLOATING MENU + LIGHTBOX
   // ==========================================================
   document.addEventListener("DOMContentLoaded", function() {
     const menuBtn = document.getElementById("menuFab");
@@ -780,7 +778,6 @@
       });
     }
 
-    // Lightbox
     const lightbox = document.querySelector("[data-lightbox]");
     if (lightbox) {
       const img = lightbox.querySelector("[data-lightbox-img]");

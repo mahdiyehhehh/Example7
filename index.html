@@ -6,7 +6,7 @@
   <title>Sweet Bloom · Bakery &amp; Cafe</title>
   <style>
     /* ==========================================================
-       Sweet Bloom — demo styles (all in one)
+       Sweet Bloom — all-in-one demo
        Soft, warm bakery / cafe / dessert shop
        ========================================================== */
 
@@ -66,12 +66,100 @@
       padding: 0 20px;
     }
 
+    /* ---------- HERO ---------- */
+    .hero {
+      background: linear-gradient(145deg, #f7f2ea, #efe8e0);
+      border-radius: 0 0 48px 48px;
+      padding: 50px 24px 40px;
+      margin: 0 12px 12px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(60, 80, 60, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "🧁";
+      position: absolute;
+      font-size: 120px;
+      opacity: 0.06;
+      right: -10px;
+      bottom: -30px;
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-family: "Georgia", "Iowan Old Style", serif;
+      font-size: 40px;
+      color: var(--green-dark);
+      margin: 0 0 8px;
+      letter-spacing: -0.3px;
+    }
+    .hero h1 small {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--pink-rose);
+      display: inline-block;
+      margin-left: 8px;
+    }
+    .hero p {
+      font-size: 17px;
+      color: #4b6455;
+      max-width: 480px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+    .hero .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    /* ---------- GLOSSY BUTTONS (hero + category tabs) ---------- */
+    .btn-glossy {
+      display: inline-block;
+      padding: 14px 34px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      background: linear-gradient(145deg, #d07e9a, #b86582);
+      box-shadow: 0 8px 18px rgba(208, 126, 154, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+      border: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+    .btn-glossy:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(208, 126, 154, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    }
+    .btn-glossy:active {
+      transform: scale(0.97);
+    }
+
+    /* glossy variants */
+    .btn-glossy-green {
+      background: linear-gradient(145deg, #6a8f7a, #4d6e5b);
+      box-shadow: 0 8px 18px rgba(70, 110, 80, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    }
+    .btn-glossy-green:hover {
+      box-shadow: 0 14px 28px rgba(70, 110, 80, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+    }
+    .btn-glossy-gold {
+      background: linear-gradient(145deg, #d4a373, #c28a5a);
+      box-shadow: 0 8px 18px rgba(194, 138, 90, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+    }
+    .btn-glossy-gold:hover {
+      box-shadow: 0 14px 28px rgba(194, 138, 90, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    }
+
     /* ---------- header ---------- */
     .site-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 20px 8px;
+      padding: 16px 20px 8px;
       max-width: 1080px;
       margin: 0 auto;
       position: relative;
@@ -98,7 +186,7 @@
       width: 48px;
       height: 48px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.6);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -106,7 +194,7 @@
       transition: background 0.2s;
     }
     .menu-btn:hover {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
     }
     .menu-btn svg {
       width: 24px;
@@ -182,27 +270,18 @@
       margin-top: 4px;
     }
 
-    /* ---------- category tabs ---------- */
+    /* ---------- category tabs (glossy) ---------- */
     .category-tabs {
       display: flex;
-      gap: 10px;
+      gap: 14px;
       flex-wrap: wrap;
-      padding: 10px 20px 0;
+      padding: 10px 20px 4px;
       max-width: 1080px;
       margin: 0 auto;
     }
-    .category-tabs a {
-      background: rgba(255, 255, 255, 0.5);
-      color: var(--green-dark);
-      font-weight: 600;
-      font-size: 14px;
-      padding: 10px 20px;
-      border-radius: 999px;
-      transition: background 0.2s, transform 0.1s;
-    }
-    .category-tabs a:hover {
-      background: #fff;
-      transform: translateY(-2px);
+    .category-tabs .btn-glossy {
+      padding: 12px 28px;
+      font-size: 15px;
     }
 
     /* ---------- product grid ---------- */
@@ -276,16 +355,6 @@
     }
     .btn-rose:hover {
       box-shadow: 0 10px 20px rgba(208, 126, 154, 0.4);
-    }
-
-    .btn-outline {
-      background: #fff;
-      color: var(--green-dark);
-      border: 1.5px solid var(--green-dark);
-    }
-    .btn-outline:hover {
-      background: var(--green-dark);
-      color: #fff;
     }
 
     .btn-block {
@@ -418,12 +487,26 @@
       .page-heading h1 { font-size: 32px; }
       .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
       .brand { font-size: 22px; }
+      .hero h1 { font-size: 30px; }
+      .hero h1 small { font-size: 18px; display: block; margin-left: 0; }
+      .hero { padding: 34px 18px 30px; }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- HERO (welcome + glossy buttons) -->
+<section class="hero">
+  <h1>Sweet Bloom <small>bakery · cafe</small></h1>
+  <p>Welcome to our cozy little café — where every bite feels like a warm hug. <br />Let’s see what we’ve got today.</p>
+  <div class="btn-group">
+    <a href="#cakes" class="btn-glossy">🧁 Cakes</a>
+    <a href="#pastries" class="btn-glossy btn-glossy-gold">🥐 Pastries</a>
+    <a href="#drinks" class="btn-glossy btn-glossy-green">☕ Drinks</a>
+  </div>
+</section>
+
+<!-- HEADER (with menu) -->
 <header class="site-header">
   <a class="brand" href="#">Sweet Bloom <small>bakery · cafe</small></a>
 
@@ -443,18 +526,12 @@
   </div>
 </header>
 
-<!-- PAGE HEADING -->
-<div class="page-heading">
-  <h1>Sweet treats</h1>
-  <span class="squiggle"></span>
+<!-- GLOSSY CATEGORY TABS (second set, below header) -->
+<div class="category-tabs">
+  <a href="#cakes" class="btn-glossy">🧁 Cakes</a>
+  <a href="#pastries" class="btn-glossy btn-glossy-gold">🥐 Pastries</a>
+  <a href="#drinks" class="btn-glossy btn-glossy-green">☕ Drinks</a>
 </div>
-
-<!-- CATEGORY TABS (demo) -->
-<nav class="category-tabs">
-  <a href="#cakes">Cakes</a>
-  <a href="#pastries">Pastries</a>
-  <a href="#drinks">Drinks</a>
-</nav>
 
 <main class="wrap">
 
@@ -495,7 +572,7 @@
     </div>
   </section>
 
-  <!-- ABOUT (demo placeholder) -->
+  <!-- ABOUT -->
   <section id="about" style="margin-top: 50px;">
     <div class="section-heading">
       <div>
@@ -550,7 +627,6 @@
     { id: "danish",   name: "Fruit Danish",    emoji: "🍒", image: "https://placehold.co/400x500/fee9ee/d07e9a?text=Danish",   price: 3.40, category: "pastry" },
   ];
 
-  // helper to render a grid
   function renderGrid(containerId, category) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -572,7 +648,6 @@
       </article>
     `).join("");
 
-    // "add to cart" just shows a toast-like feedback (no real cart)
     container.querySelectorAll("[data-add]").forEach(btn => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -587,15 +662,13 @@
     });
   }
 
-  // render both grids
   renderGrid("cake-grid", "cake");
   renderGrid("pastry-grid", "pastry");
 
   // ==========================================================
-  // UI: hamburger menu + lightbox (same as original)
+  // UI: hamburger menu + lightbox
   // ==========================================================
   document.addEventListener("DOMContentLoaded", () => {
-    // menu
     const menuBtn = document.querySelector("[data-menu-button]");
     const menuPanel = document.querySelector("[data-menu-panel]");
     if (menuBtn && menuPanel) {
@@ -611,7 +684,6 @@
       });
     }
 
-    // lightbox
     const lightbox = document.querySelector("[data-lightbox]");
     if (lightbox) {
       const img = lightbox.querySelector("[data-lightbox-img]");

@@ -151,7 +151,7 @@
       box-shadow: 0 8px 20px rgba(199, 184, 214, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.6);
     }
 
-    /* ====== HAMBURGER MENU — now a floating button at bottom-right ====== */
+    /* ====== FLOATING MENU BUTTON (bottom-right) ====== */
     .menu-fab {
       position: fixed;
       bottom: 30px;
@@ -183,7 +183,6 @@
       display: block;
     }
 
-    /* floating menu panel */
     .menu-panel-fab {
       position: fixed;
       bottom: 100px;
@@ -215,17 +214,17 @@
       background: var(--pink-blush);
     }
 
-    /* ========== HERO (BIGGER) ========== */
+    /* ========== HERO (BIGGER — extended vertically) ========== */
     .hero {
       background: linear-gradient(160deg, #fcf6f0, #f3ede6);
       border-radius: 0 0 56px 56px;
-      padding: 60px 24px 56px;
+      padding: 80px 24px 76px;
       margin: 6px 12px 16px;
       text-align: center;
       position: relative;
       overflow: hidden;
       box-shadow: 0 6px 28px rgba(60, 80, 60, 0.06);
-      min-height: 340px;
+      min-height: 440px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -233,18 +232,18 @@
     .hero::before {
       content: "🧁🍰🥐";
       position: absolute;
-      font-size: 180px;
+      font-size: 200px;
       opacity: 0.05;
       right: -20px;
       bottom: -40px;
       transform: rotate(8deg);
       pointer-events: none;
-      letter-spacing: 20px;
+      letter-spacing: 24px;
     }
     .hero::after {
       content: "☕";
       position: absolute;
-      font-size: 130px;
+      font-size: 150px;
       opacity: 0.06;
       left: -10px;
       top: 20px;
@@ -253,30 +252,30 @@
     }
     .hero h1 {
       font-family: "Georgia", "Iowan Old Style", serif;
-      font-size: 56px;
+      font-size: 64px;
       color: var(--green-dark);
-      margin: 0 0 6px;
+      margin: 0 0 8px;
       letter-spacing: -0.5px;
     }
     .hero h1 small {
-      font-size: 30px;
+      font-size: 34px;
       font-weight: 400;
       color: var(--pink-rose);
       display: inline-block;
       margin-left: 10px;
     }
     .hero .tagline {
-      font-size: 21px;
+      font-size: 23px;
       color: #4b6455;
-      max-width: 560px;
-      margin: 6px auto 0;
-      line-height: 1.7;
+      max-width: 620px;
+      margin: 8px auto 0;
+      line-height: 1.8;
       font-weight: 500;
     }
     .hero .tagline span {
       display: inline-block;
       background: rgba(208, 126, 154, 0.12);
-      padding: 0 16px;
+      padding: 0 18px;
       border-radius: 40px;
       font-weight: 600;
       color: var(--pink-rose);
@@ -546,22 +545,23 @@
       }
 
       .hero {
-        padding: 40px 18px 38px;
-        min-height: 260px;
+        padding: 50px 18px 48px;
+        min-height: 320px;
         margin: 4px 8px 12px;
       }
       .hero h1 {
-        font-size: 34px;
+        font-size: 38px;
       }
       .hero h1 small {
-        font-size: 20px;
+        font-size: 22px;
         display: block;
         margin-left: 0;
-        margin-top: 2px;
+        margin-top: 4px;
       }
       .hero .tagline {
-        font-size: 17px;
+        font-size: 18px;
       }
+
       .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       }
@@ -597,7 +597,7 @@
   </div>
 </div>
 
-<!-- ====== HERO (BIGGER) ====== -->
+<!-- ====== HERO (EXTENDED VERTICALLY) ====== -->
 <section class="hero">
   <h1>Sweet Bloom <small>bakery · cafe</small></h1>
   <p class="tagline">
